@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>
+      Congelados Delfín
+    </ion-title>
+    <ion-buttons left>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-list-header>
+      Próximos Pagos
+    </ion-list-header>
+    <ion-item *ngFor="let remesa of remesasActivas">
+      <h2>{{remesa.nombreProducto}}</h2>
+      <h3>Fecha de pago: {{getProximoPago(remesa) | date}}</h3>
+      <p>Entrada: {{remesa.createdAt | date}}</p>
+    </ion-item>
+  </ion-list>
+</ion-content>

@@ -1,0 +1,30 @@
+page-login {
+    padding: 0;
+    margin: 0;
+}
+
+.login-header-top {
+    height: 20vh;
+    background-color: #4c98ff;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    h1 {
+        color: white;
+    }
+}
+
+.login-header-logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 2em;
+    img {
+        width: 50%;
+    }
+}
+
+.login-inputs {
+    padding: 1em;
+}

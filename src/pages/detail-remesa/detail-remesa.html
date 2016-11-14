@@ -1,0 +1,44 @@
+<!--
+  Generated template for the DetailRemesa page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Remesa</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-list-header>
+      {{remesa.nombreProducto}}
+    </ion-list-header>
+    <ion-item>
+      <strong>Fecha de entrada: </strong>{{remesa.createdAt | date}}
+    </ion-item>
+    <ion-item>
+      <strong>Tipo empaquetado: </strong>{{remesa.tipoEmpaquetado}}
+    </ion-item>
+    <ion-item>
+      <strong>Cantidad empaques: </strong>{{remesa.cantidadEmpaques | number}}
+    </ion-item>
+    <ion-item>
+      <strong>Peso promedio: </strong>{{remesa.pesoPromedio ? remesa.pesoPromedio : 0 | number}}
+    </ion-item>
+    <ion-item>
+      <strong>Peso total: </strong>{{remesa.peso | number}}
+    </ion-item>
+    <ion-item>
+      <strong>Tarifa: </strong>{{remesa.tarifa | number}}
+    </ion-item>
+    <ion-item>
+      <strong>Estancia: </strong>{{remesa.estancia == 'conservacion' ? 'Conservación' : 'Congelación'}}
+    </ion-item>
+  </ion-list>
+  <button ion-button block (click)="goToRetirar(remesa)">Retirar</button>
+</ion-content>

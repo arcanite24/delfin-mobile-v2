@@ -1,0 +1,17 @@
+<ion-content>
+  <div class="login-header-top">
+    <h1>Congelados Delfín</h1>
+  </div>
+  <div class="login-header-logo">
+    <img src="/images/wea-delfinosa.png" alt="Logo">
+  </div>
+  <div class="login-inputs">
+    <ion-list>
+      <ion-item>
+        <ion-label floating >PIN</ion-label>
+        <ion-input [(ngModel)]="pin"></ion-input>
+      </ion-item>
+    </ion-list>    
+    <button ion-button block (click)="login()">Iniciar Sesión</button>
+  </div>
+</ion-content>

@@ -1,0 +1,57 @@
+<!--
+  Generated template for the AddRemesa page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Agregar Remesa</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-item>
+      <ion-label floating >Producto</ion-label>
+      <ion-input [(ngModel)]="addRemesaData.nombreProducto"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating >Empaquetado</ion-label>
+      <ion-input [(ngModel)]="addRemesaData.tipoEmpaquetado"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating >Cantidad Empaques</ion-label>
+      <ion-input [(ngModel)]="addRemesaData.cantidadEmpaques"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating >Peso Promedio</ion-label>
+      <ion-input [(ngModel)]="addRemesaData.pesoPromedio"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating >Peso Total</ion-label>
+      <ion-input [(ngModel)]="addRemesaData.peso"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label floating >Tarifa</ion-label>
+      <ion-input [(ngModel)]="addRemesaData.tarifa"></ion-input>
+    </ion-item>
+    <ion-item>
+      <ion-label>Cliente</ion-label>
+      <ion-select [(ngModel)]="addRemesaData.cliente">
+        <ion-option value="{{cliente.id}}" *ngFor="let cliente of clientes">{{cliente.name}}</ion-option>
+      </ion-select>
+    </ion-item>
+    <ion-item>
+      <ion-label>Estancia</ion-label>
+      <ion-select [(ngModel)]="addRemesaData.estancia">
+        <ion-option value="congelacion">Congelación</ion-option>
+        <ion-option value="conservacion">Conservación</ion-option>
+      </ion-select>
+    </ion-item>
+  </ion-list>
+  <button ion-button block (click)="addRemesa()">Agregar</button>
+</ion-content>
