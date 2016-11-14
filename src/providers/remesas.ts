@@ -39,4 +39,8 @@ export class Remesas {
     }).map(res => res.json());
   }
 
+  deleteRemesa(id: string) {
+    return this.http.delete(this.apiEndpoint + 'embarque/' + id).map(res => res.json());
+  }
+
 }

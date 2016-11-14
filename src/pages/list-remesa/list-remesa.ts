@@ -29,8 +29,6 @@ export class ListRemesaPage {
   }
 
   goToDetail(remesa: any) {
-    console.log(remesa);
-    
     this.navCtrl.push(DetailRemesaPage, {
       remesa: remesa
     });
