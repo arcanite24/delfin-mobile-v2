@@ -43,4 +43,8 @@ export class Remesas {
     return this.http.delete(this.apiEndpoint + 'embarque/' + id).map(res => res.json());
   }
 
+  changeEstancia(id: string, estancia: number) {
+    return this.http.put(this.apiEndpoint + 'embarque/' + id, {estancia: estancia}).map(res => res.json());
+  }
+
 }

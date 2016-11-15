@@ -9,6 +9,7 @@ import { ListRemesaPage } from '../pages/list-remesa/list-remesa';
 import { DetailRemesaPage } from '../pages/detail-remesa/detail-remesa';
 import { RetirarRemesaPage } from '../pages/retirar-remesa/retirar-remesa';
 import { EditRemesaPage } from '../pages/edit-remesa/edit-remesa';
+import { ChangeRemesaPage } from '../pages/change-remesa/change-remesa';
 
 import { Auth } from '../providers/auth';
 import { Remesas } from '../providers/remesas';
@@ -22,7 +23,8 @@ import { Remesas } from '../providers/remesas';
     ListRemesaPage,
     DetailRemesaPage,
     RetirarRemesaPage,
-    EditRemesaPage
+    EditRemesaPage,
+    ChangeRemesaPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -36,7 +38,8 @@ import { Remesas } from '../providers/remesas';
     ListRemesaPage,
     DetailRemesaPage,
     RetirarRemesaPage,
-    EditRemesaPage
+    EditRemesaPage,
+    ChangeRemesaPage
   ],
   providers: [Auth, Remesas]
 })

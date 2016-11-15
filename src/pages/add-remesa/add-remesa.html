@@ -28,10 +28,6 @@
       <ion-input [(ngModel)]="addRemesaData.cantidadEmpaques"></ion-input>
     </ion-item>
     <ion-item>
-      <ion-label floating >Peso Promedio</ion-label>
-      <ion-input [(ngModel)]="addRemesaData.pesoPromedio"></ion-input>
-    </ion-item>
-    <ion-item>
       <ion-label floating >Peso Total</ion-label>
       <ion-input [(ngModel)]="addRemesaData.peso"></ion-input>
     </ion-item>
@@ -48,8 +44,10 @@
     <ion-item>
       <ion-label>Estancia</ion-label>
       <ion-select [(ngModel)]="addRemesaData.estancia">
-        <ion-option value="congelacion">Congelación</ion-option>
-        <ion-option value="conservacion">Conservación</ion-option>
+        <ion-option value="1">1</ion-option>
+        <ion-option value="2">2</ion-option>
+        <ion-option value="3">3</ion-option>
+        <ion-option value="4">4</ion-option>
       </ion-select>
     </ion-item>
   </ion-list>

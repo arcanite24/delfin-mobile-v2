@@ -37,8 +37,8 @@
       <strong>Tarifa: </strong>{{remesa.tarifa | number}}
     </ion-item>
     <ion-item>
-      <strong>Estancia: </strong>{{remesa.estancia == 'conservacion' ? 'Conservación' : 'Congelación'}}
+      <strong>Estancia: </strong>{{remesa.estancia}}
     </ion-item>
   </ion-list>
-  <button ion-button block (click)="goToRetirar(remesa)">Retirar</button>
+  <button ion-button block (click)="goToRetirar(remesa)">Editar</button>
 </ion-content>

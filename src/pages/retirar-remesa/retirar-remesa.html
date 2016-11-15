@@ -35,5 +35,17 @@
       <ion-input [(ngModel)]="cantidadRetirar"></ion-input>
     </ion-item>
   </ion-list>
-  <button ion-button block (click)="retirar()">Retirar</button>
+  <ion-grid>
+    <ion-row wrap>
+      <ion-col width-50>
+        <button ion-button block (click)="retirar()">Retirar</button>
+      </ion-col>
+      <ion-col width-50>
+        <button ion-button block color="danger" (click)="openEliminar(remesa)">Eliminar</button>
+      </ion-col>
+      <ion-col width-50 offset-25>
+        <button ion-button block (click)="cambiarEstancia()">Cambiar Estancia</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>  
 </ion-content>

@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
-import { NavController, NavParams, ToastController } from 'ionic-angular';
+import { NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
 
 import { Remesas } from '../../providers/remesas';
 
 import { DetailRemesaPage } from '../detail-remesa/detail-remesa';
+import { ListRemesaPage } from '../list-remesa/list-remesa';
+import { ChangeRemesaPage } from '../change-remesa/change-remesa';
 
 /*
   Generated class for the RetirarRemesa page.
@@ -20,7 +22,7 @@ export class RetirarRemesaPage {
   private remesa: any;
   private cantidadRetirar: number;
 
-  constructor(public navCtrl: NavController, private params: NavParams, private toast: ToastController, private remesas: Remesas) {
+  constructor(public navCtrl: NavController, private params: NavParams, private toast: ToastController, private remesas: Remesas, private alert: AlertController) {
     this.remesa = {
       nombreProducto: '',
       tipoEmpaquetado: '',
@@ -73,6 +75,41 @@ export class RetirarRemesaPage {
       }    
     );
 
+  }
+
+  openEliminar(remesa: any) {
+    this.alert.create({
+      title: '¿Estás seguro?',
+      message: 'Estás a punto de eliminar la remesa: ' + remesa.nombreProducto,
+      buttons: [
+        {
+          text: 'Sí',
+          handler: () => {
+            this.remesas.deleteRemesa(remesa.id).subscribe(
+              data => {
+                this.navCtrl.push(ListRemesaPage);
+              },
+              err => {
+                this.toast.create({message: 'Error al eliminar remesa', duration: 1000}).present();
+                this.navCtrl.push(ListRemesaPage);
+              }
+            );
+          }
+        },
+        {
+          text: 'No',
+          handler: () => {
+            console.log('ño');            
+          }
+        }
+      ]
+    }).present();
+  }
+
+  cambiarEstancia(remesa: any) {
+    this.navCtrl.push(ChangeRemesaPage, {
+      id: this.remesa.id
+    });
   }
 
 }

@@ -38,6 +38,7 @@ export class AddRemesaPage {
   }
 
   addRemesa() {
+    this.addRemesaData.pesoPromedio = Math.floor(this.addRemesaData.peso / this.addRemesaData.cantidadEmpaques);
     this.remesas.postRemesa(this.addRemesaData).subscribe(
       data => {
         this.toast.create({message: 'Remesa agregada correctamente...', duration: 1000}).present();
