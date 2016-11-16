@@ -2,10 +2,12 @@ import { Component } from '@angular/core';
 import { NavController, NavParams, ToastController, AlertController } from 'ionic-angular';
 
 import { Remesas } from '../../providers/remesas';
+import { IRemesa } from '../../interfaces/IRemesa';
 
 import { DetailRemesaPage } from '../detail-remesa/detail-remesa';
 import { ListRemesaPage } from '../list-remesa/list-remesa';
 import { ChangeRemesaPage } from '../change-remesa/change-remesa';
+import { TarifaRemesaPage } from '../tarifa-remesa/tarifa-remesa';
 
 /*
   Generated class for the RetirarRemesa page.
@@ -19,24 +21,20 @@ import { ChangeRemesaPage } from '../change-remesa/change-remesa';
 })
 export class RetirarRemesaPage {
 
-  private remesa: any;
+  private remesa: IRemesa;
   private cantidadRetirar: number;
 
-  constructor(public navCtrl: NavController, private params: NavParams, private toast: ToastController, private remesas: Remesas, private alert: AlertController) {
-    this.remesa = {
-      nombreProducto: '',
-      tipoEmpaquetado: '',
-      cantidadEmpaques: 0,
-      pesoPromedio: 0,
-      peso: 0,
-      tarifa: 0,
-      cliente: '',
-      estancia: ''
-    };
-  }
+  constructor(
+    public navCtrl: NavController, 
+    private params: NavParams, 
+    private toast: ToastController, 
+    private remesas: Remesas, 
+    private alert: AlertController) {
+      this.remesa = this.params.get('remesa');
+    }
 
   ionViewDidLoad() {
-    this.remesa = this.params.get('remesa');
+    
   }
 
   retirar() {
@@ -110,6 +108,31 @@ export class RetirarRemesaPage {
     this.navCtrl.push(ChangeRemesaPage, {
       id: this.remesa.id
     });
+  }
+
+  cambiarTarifa(remesa: any) {
+    this.navCtrl.push(TarifaRemesaPage, {
+      remesa: this.remesa
+    });
+  }
+
+  finalizarRemesa() {
+    this.remesas.finalizarRemesa(this.remesa.id).subscribe(
+      data => {
+        this.remesas.addAction({
+          embarque: this.remesa.id,
+          tipo: 'finalizar'
+        }).subscribe(
+          data => {
+            this.toast.create({
+              message: 'Remesa finalizada correctamente.',
+              duration: 2000
+            }).present();
+            this.navCtrl.pop();
+          }
+        )        
+      }
+    )
   }
 
 }

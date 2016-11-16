@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController, NavParams } from 'ionic-angular';
 
 import { RetirarRemesaPage } from '../retirar-remesa/retirar-remesa';
+import { HistorialRemesaPage } from '../historial-remesa/historial-remesa';
 
 /*
   Generated class for the DetailRemesa page.
@@ -37,6 +38,12 @@ export class DetailRemesaPage {
   goToRetirar(remesa: any) {
     this.navCtrl.push(RetirarRemesaPage, {
       remesa: remesa
+    });
+  }
+
+  goToHistorial() {
+    this.navCtrl.push(HistorialRemesaPage, {
+      remesa: this.remesa
     });
   }
 

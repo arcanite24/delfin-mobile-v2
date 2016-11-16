@@ -39,6 +39,22 @@
     <ion-item>
       <strong>Estancia: </strong>{{remesa.estancia}}
     </ion-item>
+    <ion-item [hidden]="remesa.status == 'STATUS_INACTIVO'">
+      <strong>Status: </strong><span style="color: green">Activo</span>
+    </ion-item>
+    <ion-item [hidden]="remesa.status == 'STATUS_ACTIVO'">
+      <strong>Status: </strong><span style="color: red">Finalizada</span>
+    </ion-item>
   </ion-list>
-  <button ion-button block (click)="goToRetirar(remesa)">Editar</button>
+  <ion-grid>
+    <ion-row>
+      <ion-col width-50>
+        <button ion-button block (click)="goToRetirar(remesa)">Editar</button>
+      </ion-col>
+      <ion-col width-50>
+        <button ion-button block (click)="goToHistorial(remesa)" color="secondary">Ver Historial</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  
 </ion-content>

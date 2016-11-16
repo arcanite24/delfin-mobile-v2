@@ -30,12 +30,12 @@
     <ion-item>
       <strong>Peso total: </strong>{{remesa.peso | number}}
     </ion-item>
-    <ion-item>
+    <ion-item [hidden]="remesa.status == 'STATUS_INACTIVO'">
       <ion-label floating >Cantidad de paquetes a retirar</ion-label>
       <ion-input [(ngModel)]="cantidadRetirar"></ion-input>
     </ion-item>
   </ion-list>
-  <ion-grid>
+  <ion-grid [hidden]="remesa.status == 'STATUS_INACTIVO'">
     <ion-row wrap>
       <ion-col width-50>
         <button ion-button block (click)="retirar()">Retirar</button>
@@ -43,9 +43,14 @@
       <ion-col width-50>
         <button ion-button block color="danger" (click)="openEliminar(remesa)">Eliminar</button>
       </ion-col>
-      <ion-col width-50 offset-25>
+      <ion-col width-50>
         <button ion-button block (click)="cambiarEstancia()">Cambiar Estancia</button>
+      </ion-col>
+      <ion-col width-50>
+        <button ion-button block (click)="cambiarTarifa()">Cambiar Tarifa</button>
       </ion-col>
     </ion-row>
   </ion-grid>  
+  <button ion-button block color="danger" (click)="openEliminar(remesa)" [hidden]="remesa.status != 'STATUS_INACTIVO'">Eliminar</button>
+  <button ion-button block (click)="finalizarRemesa()" color="secondary" [hidden]="remesa.status == 'STATUS_INACTIVO'">Finalizar</button>
 </ion-content>

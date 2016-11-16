@@ -47,4 +47,16 @@ export class Remesas {
     return this.http.put(this.apiEndpoint + 'embarque/' + id, {estancia: estancia}).map(res => res.json());
   }
 
+  changeTarifa(id: string, newTarifa: number) {
+    return this.http.put(this.apiEndpoint + 'embarque/' + id, {tarifa: newTarifa}).map(res => res.json());
+  }
+
+  finalizarRemesa(id: string) {
+    return this.http.put(this.apiEndpoint + 'embarque/' + id, {status: 'STATUS_INACTIVO', cantidadEmpaques: 0}).map(res => res.json());
+  }
+
+  addAction(data: any) {
+    return this.http.post(this.apiEndpoint + 'accion', data).map(res => res.json);
+  }
+
 }

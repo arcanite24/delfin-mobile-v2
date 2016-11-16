@@ -28,9 +28,11 @@ export class ChangeRemesaPage {
   cambiarEstancia() {
     this.remesas.changeEstancia(this.id, this.newEstancia).subscribe(
       data => {
-        this.navCtrl.push(DetailRemesaPage, {
-          remesa: data
-        });
+        this.remesas.addAction({
+          embarque: this.id,
+          tipo: 'cambioEstancia',
+          newEstancia: this.newEstancia
+        }).subscribe(data => this.navCtrl.pop());
       }      
     );
   }
