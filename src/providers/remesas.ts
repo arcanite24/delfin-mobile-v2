@@ -59,4 +59,8 @@ export class Remesas {
     return this.http.post(this.apiEndpoint + 'accion', data).map(res => res.json);
   }
 
+  getHistorial(id: string) {
+    return this.http.get(this.apiEndpoint + 'embarque/' + id).map(res => res.json());
+  }
+
 }

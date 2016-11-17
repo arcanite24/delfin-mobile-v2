@@ -39,7 +39,7 @@ export class LoginPage {
           //this.navCtrl.push(HomePage);
         }
       },
-      err => console.log(err),
+      err => this.toast.create({message: 'Error con el servidor...', duration: 2000}).present(),
       () => console.log('Request a: muchacho/getAuth terminada...')
     );
   }

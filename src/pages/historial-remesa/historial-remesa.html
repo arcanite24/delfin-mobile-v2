@@ -7,12 +7,33 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>historialRemesa</ion-title>
+    <ion-title>Historial</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  <ion-list>
+    <ion-list-header>
+      Historial de acciones
+    </ion-list-header>
+    <ion-item *ngFor="let accion of acciones">
+      <h2 [ngSwitch]="accion.tipo">
+        Tipo: 
+        <span *ngSwitchCase="'retiro'" style="color: orange">Retiro</span>
+        <span *ngSwitchCase="'cambioEstancia'" style="color: blue">Cambio de estancia</span>
+        <span *ngSwitchCase="'cambioTarifa'" style="color: green">Cambio de tarifa</span>
+        <span *ngSwitchCase="'finalizar'" style="color: #2B2F66">Finalizada</span>
+        <span *ngSwitchDefault style="color: red">Acción indefinida</span>
+      </h2>
+      <h3>Fecha: {{accion.createdAt | date}}</h3>
+      <p [ngSwitch]="accion.tipo">
+        <span *ngSwitchCase="'retiro'">Cantidad: {{accion.cantidad | number}} Peso: {{accion.pesoActual | number}} kg</span>
+        <span *ngSwitchCase="'cambioEstancia'">Nueva estancia: {{accion.newEstancia}}</span>
+        <span *ngSwitchCase="'cambioTarifa'">Nueva tarfia: {{accion.newTarifa | currency:'MXN'}}</span>
+        <span *ngSwitchCase="'finalizar'">Finalizada el: {{accion.createdAt | date:'medium'}}</span>
+      </p>
+    </ion-item>
+  </ion-list>
 </ion-content>

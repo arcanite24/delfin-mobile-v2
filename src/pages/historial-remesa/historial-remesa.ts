@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
+
+import { IRemesa } from '../../interfaces/IRemesa';
+import { Remesas } from '../../providers/remesas';
 
 /*
   Generated class for the HistorialRemesa page.
@@ -13,10 +16,16 @@ import { NavController } from 'ionic-angular';
 })
 export class HistorialRemesaPage {
 
-  constructor(public navCtrl: NavController) {}
+  private remesa: IRemesa;
+  private acciones: Array<any>;
 
-  ionViewDidLoad() {
-    console.log('Hello HistorialRemesaPage Page');
+  constructor(public navCtrl: NavController, private params: NavParams, private remesas: Remesas) {
+    this.remesa = this.params.get('remesa');
+    this.remesas.getHistorial(this.remesa.id).subscribe(
+      data => {
+        console.log(data.acciones);
+        this.acciones = data.acciones;
+      }
+    );
   }
-
 }
