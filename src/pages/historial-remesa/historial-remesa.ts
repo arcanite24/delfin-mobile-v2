@@ -21,10 +21,13 @@ export class HistorialRemesaPage {
 
   constructor(public navCtrl: NavController, private params: NavParams, private remesas: Remesas) {
     this.remesa = this.params.get('remesa');
-    this.remesas.getHistorial(this.remesa.id).subscribe(
+    this.remesas.obtenerHistorial(this.remesa.id).subscribe(
       data => {
-        console.log(data.acciones);
-        this.acciones = data.acciones;
+        this.acciones = data;
+      },
+      err => {
+        console.log(err);
+        
       }
     );
   }

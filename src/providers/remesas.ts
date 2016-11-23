@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { Http } from '@angular/http';
 import 'rxjs/add/operator/map';
 
+import { TempUser } from './temp-user';
+
 /*
   Generated class for the Remesas provider.
 
@@ -11,9 +13,10 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class Remesas {
 
-  private apiEndpoint: string = 'http://congelados-delfin.arcanite24.c9users.io/api/';
+  private apiEndpoint: string = 'http://restaurantelosdelfines.com/api/';
+  //private apiEndpoint: string = 'http://congelados-delfin.arcanite24.c9users.io/api/';
 
-  constructor(public http: Http) {}
+  constructor(public http: Http, private tempUser: TempUser) {}
 
   getRemesasActivas() {
     return this.http.get(this.apiEndpoint + 'embarque/getActivos').map(res => res.json());
@@ -56,11 +59,16 @@ export class Remesas {
   }
 
   addAction(data: any) {
+    data.muchacho = this.tempUser.currentUser.id;    
     return this.http.post(this.apiEndpoint + 'accion', data).map(res => res.json);
   }
 
-  getHistorial(id: string) {
-    return this.http.get(this.apiEndpoint + 'embarque/' + id).map(res => res.json());
+  getHistorial(id: string) {    
+    return this.http.get(this.apiEndpoint + 'embarque/getHistorial/' + id).map(res => res.json());
+  }
+
+  obtenerHistorial(id: any) {
+    return this.http.get(this.apiEndpoint + 'embarque/getHistorial/' + id).map(res => res.json());
   }
 
 }

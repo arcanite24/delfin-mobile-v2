@@ -15,6 +15,7 @@ import { HistorialRemesaPage } from '../pages/historial-remesa/historial-remesa'
 
 import { Auth } from '../providers/auth';
 import { Remesas } from '../providers/remesas';
+import { TempUser } from '../providers/temp-user';
 
 @NgModule({
   declarations: [
@@ -47,6 +48,6 @@ import { Remesas } from '../providers/remesas';
     TarifaRemesaPage,
     HistorialRemesaPage
   ],
-  providers: [Auth, Remesas]
+  providers: [Auth, Remesas, TempUser]
 })
 export class AppModule {}

@@ -61,6 +61,12 @@ export class RetirarRemesaPage {
           message: '¡Retiro exitoso!',
           duration: 2000
         }).present();
+        this.remesas.addAction({
+          embarque: this.remesa.id,
+          cantidad: this.remesa.cantidadEmpaques,
+          pesoActual: this.remesa.peso,
+          tipo: 'retiro'
+        }).subscribe(data => console.log('Accion creada de reitrar.'));
         this.navCtrl.push(DetailRemesaPage, {
           remesa: this.remesa
         });

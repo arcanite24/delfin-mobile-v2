@@ -27,7 +27,7 @@
         <span *ngSwitchCase="'finalizar'" style="color: #2B2F66">Finalizada</span>
         <span *ngSwitchDefault style="color: red">Acción indefinida</span>
       </h2>
-      <h3>Fecha: {{accion.createdAt | date}}</h3>
+      <h3>Fecha: {{accion.createdAt | date}} Hecha por: {{accion.muchacho ? accion.muchacho.name : 'Muchacho no asignado.'}}</h3>
       <p [ngSwitch]="accion.tipo">
         <span *ngSwitchCase="'retiro'">Cantidad: {{accion.cantidad | number}} Peso: {{accion.pesoActual | number}} kg</span>
         <span *ngSwitchCase="'cambioEstancia'">Nueva estancia: {{accion.newEstancia}}</span>

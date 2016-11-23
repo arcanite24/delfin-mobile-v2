@@ -4,6 +4,7 @@ import { NavController, ToastController } from 'ionic-angular';
 import { HomePage } from '../home/home';
 
 import { Auth } from '../../providers/auth';
+import { TempUser } from '../../providers/temp-user';
 
 /*
   Generated class for the Login page.
@@ -19,7 +20,7 @@ export class LoginPage {
 
   private pin: string;
 
-  constructor(public navCtrl: NavController, private auth: Auth, private toast: ToastController) {}
+  constructor(public navCtrl: NavController, private auth: Auth, private toast: ToastController, private tempUser: TempUser) {}
 
   login() {
     this.auth.authUser(this.pin).subscribe(
@@ -35,6 +36,7 @@ export class LoginPage {
             message: 'Sesión iniciada correctamente...',
             duration: 3000
           }).present();
+          this.tempUser.setUser(data);      
           this.navCtrl.setRoot(HomePage);
           //this.navCtrl.push(HomePage);
         }

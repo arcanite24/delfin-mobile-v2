@@ -7,5 +7,6 @@ export interface IRemesa {
     peso: number,
     tarifa: number,
     cliente: string,
-    estancia: string
+    estancia: string,
+    muchacho: any
 }
