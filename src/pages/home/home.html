@@ -19,7 +19,7 @@
     <ion-item *ngFor="let remesa of remesasActivas">
       <h2>{{remesa.nombreProducto}}</h2>
       <h3>Fecha de pago: {{getProximoPago(remesa) | date}}</h3>
-      <p>Monto a cobrar: <strong>{{remesa.cantidadEmpaques * remesa.tarifa | currency:'MXN'}}</strong></p>
+      <p>Monto a cobrar: <strong>{{remesa.peso * remesa.tarifa | currency:'MXN'}}</strong></p>
     </ion-item>
   </ion-list>
 </ion-content>

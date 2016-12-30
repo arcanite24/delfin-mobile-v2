@@ -11,11 +11,16 @@ import { RetirarRemesaPage } from '../pages/retirar-remesa/retirar-remesa';
 import { EditRemesaPage } from '../pages/edit-remesa/edit-remesa';
 import { ChangeRemesaPage } from '../pages/change-remesa/change-remesa';
 import { TarifaRemesaPage } from '../pages/tarifa-remesa/tarifa-remesa';
+import { PagosRemesaPage } from '../pages/pagos-remesa/pagos-remesa';
 import { HistorialRemesaPage } from '../pages/historial-remesa/historial-remesa';
+import { AddClientePage } from '../pages/add-cliente/add-cliente';
+import { ListClientePage } from '../pages/list-cliente/list-cliente';
+import { EditClientePage } from '../pages/edit-cliente/edit-cliente';
 
 import { Auth } from '../providers/auth';
 import { Remesas } from '../providers/remesas';
 import { TempUser } from '../providers/temp-user';
+import { Clientes } from '../providers/clientes';
 
 @NgModule({
   declarations: [
@@ -29,7 +34,11 @@ import { TempUser } from '../providers/temp-user';
     EditRemesaPage,
     ChangeRemesaPage,
     TarifaRemesaPage,
-    HistorialRemesaPage
+    HistorialRemesaPage,
+    AddClientePage,
+    ListClientePage,
+    EditClientePage,
+    PagosRemesaPage
   ],
   imports: [
     IonicModule.forRoot(MyApp)
@@ -46,8 +55,12 @@ import { TempUser } from '../providers/temp-user';
     EditRemesaPage,
     ChangeRemesaPage,
     TarifaRemesaPage,
-    HistorialRemesaPage
+    HistorialRemesaPage,
+    AddClientePage,
+    ListClientePage,
+    EditClientePage,
+    PagosRemesaPage
   ],
-  providers: [Auth, Remesas, TempUser]
+  providers: [Auth, Remesas, TempUser, Clientes]
 })
 export class AppModule {}

@@ -1,5 +1,5 @@
 export interface IRemesa {
-    id: string,
+    id: any,
     nombreProducto: string,
     tipoEmpaquetado: string,
     cantidadEmpaques: number,
@@ -8,5 +8,7 @@ export interface IRemesa {
     tarifa: number,
     cliente: string,
     estancia: string,
-    muchacho: any
+    muchacho: any,
+    status: any,
+    pagos: Array<any>
 }

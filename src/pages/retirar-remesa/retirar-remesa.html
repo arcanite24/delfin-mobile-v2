@@ -25,14 +25,18 @@
       <strong>Cantidad empaques: </strong>{{remesa.cantidadEmpaques | number}}
     </ion-item>
     <ion-item>
-      <strong>Peso promedio: </strong>{{remesa.pesoPromedio ? remesa.pesoPromedio : 0 | number}}
+      <strong>Peso promedio: </strong>{{remesa.pesoPromedio ? remesa.pesoPromedio : 0 | number}} kg
     </ion-item>
     <ion-item>
-      <strong>Peso total: </strong>{{remesa.peso | number}}
+      <strong>Peso total: </strong>{{remesa.peso | number}} kg
     </ion-item>
     <ion-item [hidden]="remesa.status == 'STATUS_INACTIVO'">
       <ion-label floating >Cantidad de paquetes a retirar</ion-label>
       <ion-input [(ngModel)]="cantidadRetirar"></ion-input>
+    </ion-item>
+    <ion-item [hidden]="remesa.status == 'STATUS_INACTIVO'">
+      <ion-label floating >Nombre de quien retira</ion-label>
+      <ion-input [(ngModel)]="nombreWhoRetira"></ion-input>
     </ion-item>
   </ion-list>
   <ion-grid [hidden]="remesa.status == 'STATUS_INACTIVO'">
@@ -44,13 +48,21 @@
         <button ion-button block color="danger" (click)="openEliminar(remesa)">Eliminar</button>
       </ion-col>
       <ion-col width-50>
-        <button ion-button block (click)="cambiarEstancia()">Cambiar Estancia</button>
+        <button ion-button block (click)="cambiarEstancia(remesa)">Cambiar Estancia</button>
       </ion-col>
       <ion-col width-50>
-        <button ion-button block (click)="cambiarTarifa()">Cambiar Tarifa</button>
+        <button ion-button block (click)="cambiarTarifa(remesa)">Cambiar Tarifa</button>
       </ion-col>
     </ion-row>
-  </ion-grid>  
+    <ion-row> 
+      <ion-col width-25 offset-25>
+        <button ion-button block color="secondary" (click)="openPagar(remesa)" [hidden]="remesa.status == 'STATUS_INACTIVO'">Pagar</button>
+      </ion-col>
+      <ion-col width-25>
+        <button ion-button block color="secondary" (click)="viewPagos()" [hidden]="remesa.status == 'STATUS_INACTIVO'">Ver Pagos</button>
+      </ion-col>
+    </ion-row>
+  </ion-grid>    
   <button ion-button block color="danger" (click)="openEliminar(remesa)" [hidden]="remesa.status != 'STATUS_INACTIVO'">Eliminar</button>
   <button ion-button block (click)="finalizarRemesa()" color="secondary" [hidden]="remesa.status == 'STATUS_INACTIVO'">Finalizar</button>
 </ion-content>

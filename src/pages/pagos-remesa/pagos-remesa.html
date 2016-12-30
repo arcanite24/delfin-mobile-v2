@@ -1,0 +1,27 @@
+<!--
+  Generated template for the PagosRemesa page.
+
+  See http://ionicframework.com/docs/v2/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Historial de Pagos</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-list>
+    <ion-list-header>
+      Pagos de Remesa
+    </ion-list-header>
+    <ion-item *ngFor="let pago of pagos">
+      <h2>Monto: {{pago.cantidad | currency:'MXN'}}</h2>
+      <h3>Hecha por: {{pago.muchacho.name}}</h3>
+      <p>Fecha de cobro: {{pago.createdAt | date:'medium'}}</p>
+    </ion-item>
+  </ion-list>
+</ion-content>

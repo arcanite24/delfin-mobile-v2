@@ -17,8 +17,8 @@ import { IRemesa } from '../../interfaces/IRemesa';
 })
 export class TarifaRemesaPage {
 
-  private remesa: IRemesa;
-  private newTarifa: number;
+  public remesa: IRemesa;
+  public newTarifa: number;
 
   constructor(public navCtrl: NavController, private remesas: Remesas, private params: NavParams, private toast: ToastController) {
     this.remesa = this.params.get('remesa');

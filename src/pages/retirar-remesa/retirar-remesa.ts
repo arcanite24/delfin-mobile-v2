@@ -8,6 +8,7 @@ import { DetailRemesaPage } from '../detail-remesa/detail-remesa';
 import { ListRemesaPage } from '../list-remesa/list-remesa';
 import { ChangeRemesaPage } from '../change-remesa/change-remesa';
 import { TarifaRemesaPage } from '../tarifa-remesa/tarifa-remesa';
+import { PagosRemesaPage } from '../pagos-remesa/pagos-remesa';
 
 /*
   Generated class for the RetirarRemesa page.
@@ -21,8 +22,9 @@ import { TarifaRemesaPage } from '../tarifa-remesa/tarifa-remesa';
 })
 export class RetirarRemesaPage {
 
-  private remesa: IRemesa;
-  private cantidadRetirar: number;
+  public remesa: IRemesa;
+  public cantidadRetirar: number;
+  public nombreWhoRetira: string;
 
   constructor(
     public navCtrl: NavController, 
@@ -63,8 +65,9 @@ export class RetirarRemesaPage {
         }).present();
         this.remesas.addAction({
           embarque: this.remesa.id,
-          cantidad: this.remesa.cantidadEmpaques,
+          cantidad: this.cantidadRetirar,
           pesoActual: this.remesa.peso,
+          whoRetira: this.nombreWhoRetira,
           tipo: 'retiro'
         }).subscribe(data => console.log('Accion creada de reitrar.'));
         this.navCtrl.push(DetailRemesaPage, {
@@ -79,6 +82,28 @@ export class RetirarRemesaPage {
       }    
     );
 
+  }
+
+  openPagar(remesa: IRemesa) {
+    this.alert.create({
+      title: '¿Estás seguro?',
+      message: 'Se cobrará ' + (remesa.peso * remesa.tarifa) + ' MXN ...',
+      buttons: [
+        {
+          text: 'Sí',
+          handler: () => {
+            this.remesas.addPago(remesa.id, (remesa.peso * remesa.tarifa), remesa).subscribe(
+              data => this.toast.create({message: 'Pago creado correctamente.', duration: 1000}).present(), 
+              err => this.toast.create({message: 'Error al crear pago...', duration: 1000}).present()
+            )
+          }
+        },
+        {
+          text: 'Cancelar',
+          handler: () => console.log('No quiere pagar el m8 :c')
+        }
+      ]
+    }).present();
   }
 
   openEliminar(remesa: any) {
@@ -108,6 +133,12 @@ export class RetirarRemesaPage {
         }
       ]
     }).present();
+  }
+
+  viewPagos() {
+    this.navCtrl.push(PagosRemesaPage, {
+      id: this.remesa.id
+    });
   }
 
   cambiarEstancia(remesa: any) {

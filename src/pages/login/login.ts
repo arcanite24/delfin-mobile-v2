@@ -18,7 +18,7 @@ import { TempUser } from '../../providers/temp-user';
 })
 export class LoginPage {
 
-  private pin: string;
+  public pin: string;
 
   constructor(public navCtrl: NavController, private auth: Auth, private toast: ToastController, private tempUser: TempUser) {}
 

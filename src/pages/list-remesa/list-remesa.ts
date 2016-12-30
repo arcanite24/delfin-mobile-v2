@@ -17,7 +17,7 @@ import { DetailRemesaPage } from '../detail-remesa/detail-remesa';
 })
 export class ListRemesaPage {
 
-  private allRemesas: Array<any> = [];
+  public allRemesas: Array<any> = [];
 
   constructor(public navCtrl: NavController, private remesas: Remesas, private toast: ToastController) {}
 

@@ -16,8 +16,8 @@ import { DetailRemesaPage } from '../detail-remesa/detail-remesa';
 })
 export class ChangeRemesaPage {
 
-  private newEstancia: number;
-  private id: string;
+  public newEstancia: number;
+  public id: string;
 
   constructor(public navCtrl: NavController, private params: NavParams, private remesas: Remesas) {}
 

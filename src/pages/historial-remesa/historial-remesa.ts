@@ -16,8 +16,8 @@ import { Remesas } from '../../providers/remesas';
 })
 export class HistorialRemesaPage {
 
-  private remesa: IRemesa;
-  private acciones: Array<any>;
+  public remesa: IRemesa;
+  public acciones: Array<any>;
 
   constructor(public navCtrl: NavController, private params: NavParams, private remesas: Remesas) {
     this.remesa = this.params.get('remesa');

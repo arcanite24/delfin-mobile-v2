@@ -10,7 +10,7 @@ import { Remesas } from '../../providers/remesas';
 })
 export class HomePage {
 
-  private remesasActivas: Array<any> = [];
+  public remesasActivas: Array<any> = [];
 
   constructor(public navCtrl: NavController, private remesas: Remesas) {
     //Cargar las remesas

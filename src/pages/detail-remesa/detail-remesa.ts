@@ -16,7 +16,7 @@ import { HistorialRemesaPage } from '../historial-remesa/historial-remesa';
 })
 export class DetailRemesaPage {
 
-  private remesa: any;
+  public remesa: any;
 
   constructor(public navCtrl: NavController, private params: NavParams) {
     this.remesa = {
@@ -29,9 +29,6 @@ export class DetailRemesaPage {
       cliente: '',
       estancia: ''
     };
-  }
-
-  ionViewDidLoad() {
     this.remesa = this.params.get('remesa');
   }
 
@@ -41,7 +38,7 @@ export class DetailRemesaPage {
     });
   }
 
-  goToHistorial() {
+  goToHistorial(remesa: any) {
     this.navCtrl.push(HistorialRemesaPage, {
       remesa: this.remesa
     });

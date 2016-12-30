@@ -49,7 +49,7 @@ export class Remesas {
   changeEstancia(id: string, estancia: number) {
     return this.http.put(this.apiEndpoint + 'embarque/' + id, {estancia: estancia}).map(res => res.json());
   }
-
+ 
   changeTarifa(id: string, newTarifa: number) {
     return this.http.put(this.apiEndpoint + 'embarque/' + id, {tarifa: newTarifa}).map(res => res.json());
   }
@@ -69,6 +69,20 @@ export class Remesas {
 
   obtenerHistorial(id: any) {
     return this.http.get(this.apiEndpoint + 'embarque/getHistorial/' + id).map(res => res.json());
+  }
+
+  addPago(idRemesa: any, cantidad: number, remesa: any) {
+    return this.http.post(this.apiEndpoint + 'pago', {
+      remesa: idRemesa,
+      cantidad: cantidad,
+      muchacho: this.tempUser.currentUser.id,
+      tarifa: remesa.tarifa,
+      peso: remesa.peso
+    }).map(res => res.json());
+  }
+
+  getAllPagos(idRemesa: any) {
+    return this.http.get(this.apiEndpoint + 'pago/getByRemesa/' + idRemesa).map(res => res.json());
   }
 
 }

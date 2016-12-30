@@ -17,8 +17,8 @@ import { HomePage } from '../home/home';
 })
 export class AddRemesaPage {
 
-  private addRemesaData: any = {};
-  private clientes: Array<any> = [];
+  public addRemesaData: any = {};
+  public clientes: Array<any> = [];
 
   constructor(public navCtrl: NavController, private remesas: Remesas, private toast: ToastController) {
     this.addRemesaData = {
