@@ -23,7 +23,7 @@ export class Remesas {
   }
 
   getAllRemesas() {
-    return this.http.get(this.apiEndpoint + 'embarque').map(res => res.json());
+    return this.http.get(this.apiEndpoint + 'embarque/getActivos').map(res => res.json());
   }
 
   getAllClientes() {
