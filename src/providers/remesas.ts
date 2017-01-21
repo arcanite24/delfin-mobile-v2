@@ -13,7 +13,7 @@ import { TempUser } from './temp-user';
 @Injectable()
 export class Remesas {
 
-  private apiEndpoint: string = 'http://restaurantelosdelfines.com/api/';
+  private apiEndpoint: string = 'http://congeladosdelfines.com/api/';
   //private apiEndpoint: string = 'http://congelados-delfin.arcanite24.c9users.io/api/';
 
   constructor(public http: Http, private tempUser: TempUser) {}
