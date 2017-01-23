@@ -11,7 +11,7 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class Auth {
 
-  private apiEndpoint: string = 'http://restaurantelosdelfines.com/api/';
+  private apiEndpoint: string = 'http://congeladosdelfines.com/api/';
 
   constructor(public http: Http) {
     
